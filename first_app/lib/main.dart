@@ -43,6 +43,7 @@ class _MyAppState extends State<MyApp> {
         'answers': ['Me', 'You', 'Herold', 'Steve']
       }
     ];
+    print(questions[_questionIndex]['questionText']);
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -51,10 +52,10 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(
-              (questions[_questionIndex]['questionText'] as String),
+              questions[_questionIndex]['questionText'] as String
             ),
             // ... 1 listánk lesz nested list helyett
-            ...(questions[_questionIndex]['answer'] as List<String>).map((answer){
+            ...(questions[_questionIndex]['answers'] as List<String>).map((answer){
               return Answer(_answerQuestion, answer);
             }).toList()
           ],

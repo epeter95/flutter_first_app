@@ -12,12 +12,12 @@ class Answer extends StatelessWidget {
     return Container(
       //akkora legyen a widget, amekkora a szöveg
       width: double.infinity,
-      child:  ElevatedButton(
+      child: ElevatedButton(
         onPressed: selectHandler,
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.purple,
         ),
-        child: const Text('Answer 1'),
+        child: Text(answerText),
       ),
     );
   }
