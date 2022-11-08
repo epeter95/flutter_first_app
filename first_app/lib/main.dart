@@ -52,9 +52,16 @@ class _MyAppState extends State<MyApp> {
 
   void _answerQuestion(int score) {
     // ez kell ,hogy változzon a képernyőn amit szeretnénk
-    _totalScore+=score;
+    _totalScore += score;
     setState(() {
       _questionIndex++;
+    });
+  }
+
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
     });
   }
 
@@ -71,7 +78,7 @@ class _MyAppState extends State<MyApp> {
                 questions,
                 _questionIndex,
               )
-            : Result(_totalScore),
+            : Result(_totalScore, _resetQuiz),
       ),
     );
   }
