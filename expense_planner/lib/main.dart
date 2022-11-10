@@ -28,6 +28,10 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+        // buttonTheme: const ButtonThemeData(
+        //   buttonColor: Colors.purple,
+        //   textTheme: ButtonTextTheme.primary,
+        // ),
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
             fontFamily: 'OpenSans',
