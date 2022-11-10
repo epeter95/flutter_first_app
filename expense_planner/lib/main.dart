@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         colorScheme: Theme.of(context).colorScheme.copyWith(
+              primary: Colors.purple,
               secondary: Colors.amber,
             ),
         fontFamily: 'Quicksand',
@@ -28,10 +29,11 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-        // buttonTheme: const ButtonThemeData(
-        //   buttonColor: Colors.purple,
-        //   textTheme: ButtonTextTheme.primary,
-        // ),
+        buttonTheme: const ButtonThemeData(
+          buttonColor: Colors.purple,
+          textTheme: ButtonTextTheme.primary,
+          splashColor: Colors.purple,
+        ),
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
             fontFamily: 'OpenSans',
@@ -78,15 +80,21 @@ class _MyHomePageState extends State<MyHomePage> {
     ).toList();
   }
 
-  void _addNewTransaction(String title, double amount) {
+  void _addNewTransaction(String title, double amount, DateTime date) {
     final newTx = Transaction(
-      id: '10',
+      id: DateTime.now().toString(),
       title: title,
       amount: amount,
-      date: DateTime.now(),
+      date: date,
     );
     setState(() {
       _userTransactions.add(newTx);
+    });
+  }
+
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((element) => element.id == id);
     });
   }
 
@@ -121,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Chart(recentTransactions),
-          TransactionList(_userTransactions),
+          TransactionList(_userTransactions, _deleteTransaction),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

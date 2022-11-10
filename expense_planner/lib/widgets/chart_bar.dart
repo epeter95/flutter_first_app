@@ -34,6 +34,7 @@ class ChartBar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: FractionallySizedBox(
+                alignment: Alignment.bottomCenter,
                 heightFactor: spendingPercentageOfTotal,
                 child: Container(
                   decoration: BoxDecoration(
